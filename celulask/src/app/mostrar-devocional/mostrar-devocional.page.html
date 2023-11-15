@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Devocional</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item text-wrap>
+      <table width="100%">
+        <tr style="vertical-align: top;" width="100%">
+          <td style="font-size: large;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;text-align: center;color: #003153;">
+            <strong>{{titulo}}</strong>
+          </td>
+        </tr>
+        <tr style="vertical-align: top;" width="100%">
+          <td style="font-size: small;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;text-align: center;">
+            Charles Haddon Spurgeon
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+    <ion-item text-wrap style="text-align: center;">
+      <strong>
+      <label style="font-size: large;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 2px;font-weight: lighter;color:#003153;">{{versiculo}}</label>
+      </strong>
+    </ion-item>
+    <ion-item text-wrap>
+      <label style="font-size: large;padding-left: 2px;padding-right: 2px;padding-top: 2px;padding-bottom: 25px;text-align: justify;">{{contenido}}</label>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,19 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Cancionero</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item text-wrap *ngFor="let ca of canciones" (click)="pushPage(ca.numero)">
+    <ion-icon *ngIf=" ca.numero != 0" name='headset' is-active="false" color="primary">
+    </ion-icon>
+    <label  *ngIf=" ca.numero == 0" style="font-size: large;padding-left: 2px;">{{ ca.titulo }}</label>
+    <label  *ngIf=" ca.numero != 0" style="font-size: large;padding-left: 2px;">{{ ca.numero }}. {{ ca.titulo }}</label>
+    </ion-item>
+  </ion-list>
+</ion-content>

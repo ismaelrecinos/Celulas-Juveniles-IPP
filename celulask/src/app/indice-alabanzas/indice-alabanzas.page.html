@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Alabanzas Congregacionales</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary" style="vertical-align: center;">
+    <ion-searchbar (ionInput)="buscarAlabanza($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div *ngIf="alabanzasFiltro?.length == '0'">
+    <ion-list>
+      <ion-item text-wrap
+        *ngFor="let al of alabanzas"
+        style="font-size: large;padding-left: 2px;">
+        <ion-icon name='musical-note' is-active="false" style="color: #003153;">
+        </ion-icon>
+        <div *ngIf=" al.escuchar != null && al.escuchar != ''">
+          <a href="{{ al.escuchar }}" target="_blank" style="text-decoration: none;color: red;">
+            &nbsp;&nbsp;
+            <ion-icon name="logo-youtube"></ion-icon>
+            &nbsp;&nbsp;
+          </a>
+        </div>
+        <label (click)="pushPage(al.numero)" style="font-size: large;padding-left: 2px;">{{ al.numero }}. {{ al.titulo }}</label>
+      </ion-item>
+    </ion-list>  
+  </div>
+  <div *ngIf="alabanzasFiltro?.length != '0'">
+    <ion-list>
+      <ion-item text-wrap
+        *ngFor="let al of alabanzasFiltro"
+        style="font-size: large;padding-left: 2px;">
+        <ion-icon name='musical-note' is-active="false" style="color: #003153;">
+        </ion-icon>
+        <div *ngIf=" al.escuchar != null && al.escuchar != ''">
+          <a href="{{ al.escuchar }}" target="_blank" style="text-decoration: none;color: red;">
+            &nbsp;&nbsp;
+            <ion-icon name="logo-youtube"></ion-icon>
+            &nbsp;&nbsp;
+          </a>
+        </div>
+        <label (click)="pushPage(al.numero)" style="font-size: large;padding-left: 2px;">{{ al.numero }}. {{ al.titulo }}</label>
+      </ion-item>
+    </ion-list>  
+  </div>
+
+</ion-content>

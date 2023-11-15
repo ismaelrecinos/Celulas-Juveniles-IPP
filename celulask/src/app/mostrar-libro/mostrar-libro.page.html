@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngFor = "let v of versos" style="font-size: large;">
+      {{v.libro}} {{v.capitulo}}                                                 
+     </ion-title> 
+  </ion-toolbar>
+</ion-header>
+                                                                       
+ <ion-content> 
+    <ion-list class="contenido" *ngFor = "let v of versos">
+    <ion-item *ngFor = "let verso of v.versiculos" text-wrap (click)="mostrarVersiculo(v.ruta,v.capitulo,verso)" class="contenido">
+      <label style="padding-top: 5px;padding-bottom: 5px;">{{ verso }}</label> 
+    </ion-item>                                                      
+  </ion-list>
+ </ion-content>                                                       
+ 
+ <ion-footer>
+  <ion-toolbar color="light">
+     <table width="100%">
+       <tr>
+         <td width="15%" *ngFor = "let v of versos">
+           <ion-button expand="full" color="light" 
+           (click)="mostrarCapituloAnterior(v.ruta,v.capitulo)">
+             <ion-icon ios="arrow-back-circle" md="arrow-back-circle" style="font-size: xx-large;" color="primary"></ion-icon>
+           </ion-button>
+         </td>
+         <td width="70%">
+           <ion-item style="text-align: left;width: 100%;">
+            <ion-label>Capítulo</ion-label>
+            <ion-select ok-text="Ir" cancel-text="Cancelar" (ionChange)="onSelectChange($event)" color="light">
+               <ion-select-option *ngFor="let cap of capitulos" [value]="cap">
+                 {{cap.numeroCapitulo}}
+               </ion-select-option>
+           </ion-select>
+           </ion-item>
+         </td>
+         <td width="15%" *ngFor = "let v of versos">
+           <ion-button expand="full" color="light"
+           (click)="mostrarCapituloSiguiente(v.ruta,v.capitulo)">
+             <ion-icon ios="arrow-forward-circle" md="arrow-forward-circle" style="font-size: xx-large;" color="primary"></ion-icon>
+           </ion-button>
+         </td>
+       </tr>
+     </table>
+  </ion-toolbar> 
+ </ion-footer>
+                                                     
+ 

@@ -1,0 +1,28 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Coros de Avivamiento</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item text-wrap *ngFor="let cor of coros" (click)="pushPage(cor.numero)" class="contenido">
+      <table>
+        <tr>
+          <td>
+            <ion-icon *ngIf=" cor.numero != 0" name='musical-notes' is-active="false" color="primary">
+            </ion-icon>
+            &nbsp;
+          </td>
+          <td>
+            <label  *ngIf=" cor.numero == 0" style="font-size: large;padding-left: 2px;">{{ cor.titulo }}</label>
+            <label  *ngIf=" cor.numero != 0" style="font-size: large;padding-left: 2px;">{{ cor.numero }}. {{ cor.titulo }}</label>
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+  </ion-list>
+</ion-content>

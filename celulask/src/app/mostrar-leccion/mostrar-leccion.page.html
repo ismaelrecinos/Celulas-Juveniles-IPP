@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngFor = "let lec of lecciones" style="font-size: large;">
+     <label *ngIf="lec.numero != '0'">Encuentro {{lec.numero}}</label>                  
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+                                                                       
+ <ion-content class="page-mostrarLeccion">
+   <div style="font-size: medium;">
+    
+    <ion-list no-lines *ngFor="let lec of lecciones">
+     <ion-item text-wrap>
+       <div style="text-align:center;width:100%;">
+       <label style="color:auto;font-size:large;font-weight:bold;">
+         Iglesia Evangélica del Príncipe de Paz
+       </label>
+       <table width="100%">
+         <tr>
+           <td class="tdTable2" style="font-weight: bold;">Isaias 9:6, Con un mensaje de fe y esperanza</td>
+         </tr>
+         <tr>
+           <td class="tdTable2">Colonia Anémona, pasaje 2, casa #10, San Martín, San Salvador, El Salvador</td>
+         </tr>
+         <tr>
+           <td class="tdTable2">Pastor Lic. Noé Nehemías Marroquín</td>
+         </tr>
+       </table>
+       </div>   
+     </ion-item>
+ 
+     <ion-item text-wrap>
+       <div style="text-align:center;width:100%;">
+       <label style="color:auto;text-decoration:underline;font-size:large;font-weight:bold;">{{lec.titulo}}</label>  
+       </div> 
+     </ion-item>
+ 
+     <ion-item text-wrap *ngIf="lec.numero != '0'" style="text-align: justify;">
+       <label><strong>Objetivo: </strong>{{ lec.objetivo }}</label>
+     </ion-item>
+ 
+     <ion-item text-wrap *ngIf="lec.numero != '0'" style="text-align: justify;">
+       <label><strong>Introducción: </strong>{{ lec.introduccion }}</label>
+     </ion-item>
+ 
+     <ion-item text-wrap *ngFor="let oracion of lec.contenido" style="text-align: justify;">
+         <ion-text *ngIf="oracion != '♦' && oracion.substring(0,2) == 'TT'"
+          style="color:auto;font-weight:bold;">
+           {{ oracion.substring(2,oracion.length) }}
+         </ion-text>
+         <ion-text *ngIf="oracion != '♦' && oracion.substring(0,2) == 'ST'"
+          style="font-weight:bold;">
+           {{ oracion.substring(2,oracion.length) }}
+         </ion-text>
+         <ion-text *ngIf="oracion != '♦' && oracion == 'PARA DIALOGAR:'"
+          style="text-decoration: underline;">
+           {{ oracion }}
+         </ion-text>
+         <ion-text *ngIf="oracion != '♦' && oracion.substring(0,2) != 'TT' && oracion.substring(0,2) != 'ST' && oracion != 'PARA DIALOGAR:'">
+           {{ oracion }}
+         </ion-text>
+     </ion-item>
+ 
+     <ion-item text-wrap *ngIf="lec.numero != '0'">
+       <label style="color:auto;font-weight:bold;text-decoration: underline;">
+         Tareas Para Realizar Durante la Semana:
+       </label>
+     </ion-item>
+
+     <ion-item text-wrap *ngIf="lec.numero != '0'">
+      <ion-list no-lines style="text-align: justify;">
+        <ion-item *ngFor="let tarea of lec.tareas">
+          <ion-text>{{ tarea }}</ion-text>
+        </ion-item>
+      </ion-list>
+     </ion-item>    
+ 
+   </ion-list>
+   </div>
+ </ion-content>                                                       
+                                                     
+ 

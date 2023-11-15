@@ -1,0 +1,93 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Biblia en un Año</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item text-wrap>
+      <table width="100%">
+        <tr style="vertical-align: top;" width="100%">
+          <td width="25%" style="text-align:center;padding-top:4px;padding-bottom:4px;">
+            <strong><label style="font-size: large;padding-left: 2px;">Día</label></strong>
+          </td>
+          <td width="75%" style="text-align:center;padding-top:4px;padding-bottom:4px;">
+            <strong>
+              <label style="font-size: large;padding-left: 4px;">
+                Lectura Diaria y Devocional
+              </label><br/>
+            </strong>
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+    <ion-item text-wrap (click)="loadPreviousWeekData();" style="text-align: center;vertical-align: middle;">
+      <div style="width:100%;text-align: center;">
+        <table style="width:100%;text-align: center;">
+          <tr>
+            <td style="text-align:right;width: 35%;">
+            <ion-icon ios="arrow-back-circle" md="arrow-back-circle" style="font-size: xx-large;" color="primary"></ion-icon>       
+            </td>
+            <td style="text-align:left;width: 65%;">
+              <label style="font-size: large;padding-left: 4px;"> Semana Anterior </label>  
+            </td>
+          </tr>
+        </table>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item text-wrap *ngFor="let lectura of lecturas" (click)="pushPage(lectura[0].tituloDevocional, lectura[0].versiculoBaseDevocional, lectura[0].contenidoDevocional)">
+      <table width="100%">
+        <tr style="vertical-align: top;" width="100%">
+          <td width="25%" 
+            *ngIf="lectura[0].dia == currentDay && lectura[0].numeroMes == currentMonth && lectura[0].numeroAnio == currentYear" style="background-color: #e4eedb;font-size: large;padding-left: 2px;text-align:center;padding-top:4px;padding-bottom:4px;border: 2px solid; border-color: #e4eedb;">
+            <label style="font-size: large;padding-left: 2px;">{{lectura[0].nombreDia}} {{lectura[0].dia}} de {{lectura[0].mes}}</label>
+          </td>
+          <td width="25%"
+            *ngIf="lectura[0].dia != currentDay || lectura[0].numeroMes != currentMonth || lectura[0].numeroAnio != currentYear" style="background-color: #e0eaf5;font-size: large;padding-left: 2px;text-align:center;padding-top:4px;padding-bottom:4px;border: 2px solid; border-color: #e0eaf5;">
+            <label style="font-size: large;padding-left: 2px;">{{lectura[0].nombreDia}} {{lectura[0].dia}} de {{lectura[0].mes}}</label>
+          </td>
+          <td width="75%" 
+              *ngIf="lectura[0].dia == currentDay && lectura[0].numeroMes == currentMonth && lectura[0].numeroAnio == currentYear" 
+              style="background-color: #e4eedb;text-align:justify;padding-top:4px;padding-bottom:4px;padding-left:4px;padding-right:4px;border: 2px solid; border-color: #e4eedb;">
+            <strong>
+              <label style="font-size: large;">{{ lectura[0].lecturaDiaria}}</label><br/>
+            </strong>
+            <label style="font-size: large;">{{ lectura[0].tituloDevocional}}</label>
+          </td>
+          <td width="75%" 
+              *ngIf="lectura[0].dia != currentDay || lectura[0].numeroMes != currentMonth || lectura[0].numeroAnio != currentYear" 
+              style="text-align:justify;padding-top:4px;padding-bottom:4px;padding-left:4px;padding-right:4px;border: 2px solid; border-color: #e0eaf5;">
+            <strong>
+              <label style="font-size: large;">{{ lectura[0].lecturaDiaria}}</label><br/>
+            </strong>
+            <label style="font-size: large;">{{ lectura[0].tituloDevocional}}</label>
+          </td>
+        </tr>
+      </table>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item text-wrap (click)="loadNextWeekData();" style="text-align: center;vertical-align: middle;">
+      <div style="width:100%;text-align: center;">
+        <table style="width:100%;text-align: center;">
+          <tr>
+            <td style="text-align:right;width: 35%;">
+            <ion-icon ios="arrow-forward-circle" md="arrow-forward-circle" style="font-size: xx-large;" color="primary"></ion-icon>
+            </td>
+            <td style="text-align:left;width: 65%;">
+              <label style="font-size: large;padding-left: 4px;"> Semana Siguiente </label>  
+            </td>
+          </tr>
+        </table>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

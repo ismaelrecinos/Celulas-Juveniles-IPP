@@ -1,0 +1,15 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;" style="font-size: large;">
+      Dinámica {{numeroDinamica}} 
+    </ion-title>
+  </ion-toolbar>
+</ion-header>                                                 
+                                                                     
+<ion-content class="page-mostrarDinamica">
+<div style="font-size: large;text-align: justify;" *ngIf="contenido" [innerHTML]="contenido"></div>		                                                                    
+</ion-content>                                                       
+

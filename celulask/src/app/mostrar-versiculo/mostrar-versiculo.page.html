@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">
+      {{biblia}}
+     </ion-title> 
+  </ion-toolbar>
+</ion-header>
+                                                                       
+ <ion-content class="background"> 
+    <ion-list no-lines class="contenido">                                                 
+     <ion-item text-wrap style="text-align: justify !important;"  class="contenido">
+       <label style="font-size: xx-large;">{{ versiculo }}</label> 
+     </ion-item>                                                      
+     <ion-item text-wrap  class="contenido">
+       <label style="font-size: xx-large;text-align: justify;">{{libro}} {{capitulo}}:{{numVersiculo}}</label> 
+     </ion-item>
+    </ion-list>
+ </ion-content>
+ 
+ <ion-footer>
+  <ion-toolbar color="light">
+     <table width="100%" style="text-align: center;">
+       <tr *ngIf="lecturaAuto == 'S'">
+         <td width="100%" colspan="2">
+          <label style="font-size: small;color: #003153;">{{ textoInfo }}</label>  
+         </td>
+       </tr>
+       <tr>
+         <td width="100%" colspan="2">
+          <ion-button expand="full" color="light"  
+           (click)="establecerLecturaAutomatica()">
+             <label>{{textoLecturaAuto}}</label>
+           </ion-button>
+         </td>
+       </tr>
+       <tr>
+         <td width="50%">
+          <ion-button expand="full" color="light"  
+           (click)="mostrarVersiculoAnterior(libro,capitulo,numVersiculo,biblia,versiculo)">
+             <ion-icon ios="arrow-back-circle" md="arrow-back-circle" style="font-size: xx-large;" color="primary"></ion-icon>
+           </ion-button>
+         </td>
+         <!--td width="30%">
+          <ion-button expand="full" color="light" (click)="share(versiculo,libro,capitulo,numVersiculo)"
+           style="text-align: right;">
+             <ion-icon ios="share-social-outline" md="share-social-outline" style="font-size: xx-large;" color="primary"></ion-icon>
+           </ion-button>
+         </td-->
+         <td width="50%">
+          <ion-button expand="full" color="light"
+           (click)="mostrarVersiculoSiguiente(libro,capitulo,numVersiculo,biblia,versiculo)">
+             <ion-icon ios="arrow-forward-circle" md="arrow-forward-circle" style="font-size: xx-large;" color="primary"></ion-icon>
+           </ion-button>
+         </td>
+       </tr>
+     </table>
+  </ion-toolbar> 
+ </ion-footer>
+                                                     
+ 

@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: large;">Holy Bible</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <table width="100%">
+    <tr style="vertical-align: top;" width="100%">
+      <td width="50%">
+        <ion-list>
+          <ion-item text-wrap *ngFor="let lib of librosAntiguoTestamento" (click)="pushPage(lib.titulo,1)">
+          <ion-icon *ngIf=" lib.numero != -1" name='book' is-active="false" color="primary">
+          </ion-icon>
+          <label  *ngIf=" lib.numero != -1" style="font-size: large;padding-left: 2px;">{{ lib.titulo }}</label>
+          <label  *ngIf=" lib.numero == -1" style="font-size: large;padding-left: 2px;">{{ lib.titulo }}</label>
+          </ion-item>
+        </ion-list>
+      </td>
+      <td width="50%">
+        <ion-list>
+          <ion-item text-wrap *ngFor="let lib of librosNuevoTestamento" (click)="pushPage(lib.titulo,1)">
+          <ion-icon *ngIf=" lib.numero != -2" name='book' is-active="false" color="primary">
+          </ion-icon>
+          <label  *ngIf=" lib.numero != -2" style="font-size: large;padding-left: 2px;">{{ lib.titulo }}</label>
+          <label  *ngIf=" lib.numero == -2" style="font-size: large;padding-left: 2px;">{{ lib.titulo }}</label>
+          </ion-item>
+        </ion-list>
+      </td>
+    </tr>
+  </table>
+</ion-content>

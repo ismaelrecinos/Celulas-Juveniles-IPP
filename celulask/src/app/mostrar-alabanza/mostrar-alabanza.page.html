@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngFor = "let al of alabanzas" style="font-size: large;">
+      {{al.numero}} ♪ {{al.titulo }}                                                      
+     </ion-title> 
+  </ion-toolbar>
+</ion-header>
+                                                                     
+ <ion-content class="background">
+   <div *ngFor = "let al of alabanzas" class="contenido" id="print-wrapper">
+     <!--table style="width: 100%;">
+       <tr>
+         <td>
+          <ion-button expand="full" color="primary" (click)="share(al)">
+            <ion-icon ios="share-social-outline" md="share-social-outline"></ion-icon>
+            &nbsp;
+            Compartir
+          </ion-button>
+        </td>
+        <td>
+        <ion-button expand="full" color="light" (click)="createPdf(al)">
+          <ion-icon ios="document-text-outline" md="document-text-outline"></ion-icon>
+          &nbsp;
+          Obtener PDF
+        </ion-button>
+        </td>
+       </tr>
+     </table-->
+     <ion-list no-lines>                                                 
+     <ion-item text-wrap *ngFor = "let al of alabanzas">                                 
+       <div *ngIf=" al.escuchar != null" style='font-size: large;text-align:center;width:100%;'>
+          <a href="{{ al.escuchar }}" target="_blank" style="text-decoration: none;color: red;">
+            <ion-icon name="logo-youtube"></ion-icon>
+            &nbsp;
+            <label style="color:#003153;font-weight: bold;">Reproducir en YouTube</label>
+          </a>
+       </div>                                                          
+     </ion-item>
+     <ion-item text-wrap class="contenido" *ngFor = "let verso of al.versos">                                 
+       <div style='font-size: large;text-align:center;width:100%;'>
+         <label *ngIf=" verso != '♪'">{{ verso }}</label><br/>
+       </div>                                                          
+     </ion-item>                                                      
+   </ion-list>
+   </div>                                                          
+ </ion-content>                                                       
+ 

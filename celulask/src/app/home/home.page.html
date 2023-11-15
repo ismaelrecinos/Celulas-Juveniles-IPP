@@ -1,0 +1,122 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="font-size: x-large;">Bienvenido(a)</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="text-align: center;background-color: #003153;">
+    <img src="assets/img/CelulasJuveniles.png" 
+    style="width: 75%;">
+  </div>
+  <ion-list no-border>
+   <!--ion-item text-wrap style="text-align: center;">
+      <ion-label style="font-size: large;font-weight: bold;color: white;">
+        Células Juveniles IPP San Martín
+      </ion-label>
+    </ion-item>
+    <ion-item text-wrap (click)="mostrarCapitulo(libroTexto,capitulo)">
+      <label style="font-size: large;text-align: justify;">
+        Una célula es un grupo de 4 a 15 personas que se reúnen semanalmente fuera del edificio de la iglesia
+        con el propósito de evangelizar, confraternizar y edificarse, y que están comprometidos con las funciones
+        de la iglesia local.
+      </label>
+    </ion-item-->
+
+    <ion-item style="padding-top: 5px;">
+      <ion-list>
+        <ion-item text-wrap *ngFor="let lectura of lecturas" (click)="mostrarDevocional(lectura[0].tituloDevocional, lectura[0].versiculoBaseDevocional, lectura[0].contenidoDevocional)">
+          <table width="100%" style="">
+            <tr style="vertical-align: top;" width="100%">
+              <td width="25%" 
+                  style="text-align:center;border-top: 1px solid;border-left: 1px solid;border-right: 1px solid;border-color: #003153;"
+                  colspan="2">
+                <strong>  
+                  <label style="font-size: large;padding-bottom: 10px;font-weight: lighter;color: #003153;">Devocional Diario</label>
+                </strong>
+              </td>
+            </tr>
+            <tr style="vertical-align: top;" width="100%">
+              <td width="25%" 
+                  style="text-align:center;border-bottom: 1px solid;border-left: 1px solid;border-color: #003153;padding-bottom: 5px;">
+                <label style="font-size: large;padding-left: 2px;">
+                  {{lectura[0].nombreDia}} {{lectura[0].dia}} de {{lectura[0].mes}}
+                </label>
+              </td>
+              <td width="75%"
+                  style="text-align:center;border-bottom: 1px solid;border-right: 1px solid;border-color: #003153;padding-bottom: 5px;">
+                <strong>
+                  <label style="font-size: large;padding-right: 2px !important;">{{ lectura[0].lecturaDiaria}}</label>
+                  <br/>
+                </strong>
+                <label style="font-size: large;padding-right: 2px !important;">{{ lectura[0].tituloDevocional}}</label>
+              </td>
+            </tr>
+          </table>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+
+    <ion-item text-wrap style="vertical-align: middle;">
+      <div style="text-align:center;width:100%;font-size:medium;font-weight:bold;color: #003153;">
+        <a style="text-decoration: none;" href="https://www.facebook.com/ipp.sanmartin7" target="_blank">
+          <ion-icon name="logo-facebook"></ion-icon>
+          &nbsp;  
+          IPP San Martín
+        </a>
+      </div>   
+    </ion-item>
+    <ion-item text-wrap (click)="mostrarCapitulo(libroTexto,capitulo)" style="padding-top: 15px;">
+      <label style="font-size: large;text-align: center;">
+        {{versiculoTexto}}
+      </label>
+    </ion-item>
+    <ion-item text-wrap style="font-size: large;text-align: center;">
+      <ion-label>
+      {{libroTexto}} {{capitulo}}:{{versiculo}}
+      </ion-label>
+    </ion-item>
+    <ion-item style="text-align: center;font-size: xx-large;">
+      <table width="100%">
+        <tr width="100%">
+          <td width="100%" (click)="establecerVersiculo()">
+            <ion-icon ios="sync" md="sync" color="primary"></ion-icon>
+          </td>
+          <!--td width="50%" (click)="share(versiculoTexto,libroTexto,capitulo,versiculo)">
+            <ion-icon ios="share-social-outline" md="share-social-outline" color="primary"></ion-icon>
+          </td-->
+        </tr>
+      </table>
+    </ion-item>
+    <ion-item style="font-size: large;text-align: center;">
+      <ion-label>
+        Santa Biblia RV1960
+      </ion-label>
+    </ion-item>
+    <!--ion-item text-wrap>
+      <table width="100%">
+        <tr>
+          <td width="65%" style="text-align: right;"> 
+            <input type="text" name="textoBibliaInput" 
+                   style="width: 99% !important;padding-right: 1px;" 
+                   [(ngModel)]="textoBibliaInput"
+                   placeholder="Buscar texto bíblico">
+          </td>
+          <td  width="35%" style="text-align: left;padding-left: 1px;">
+            <button ion-button full style="width: 99% !important;" 
+                    color="primary" (click)="buscarTextoBiblia()">
+              <ion-icon ios="ios-search" md="md-search"></ion-icon>
+              &nbsp;
+              Buscar
+            </button>
+          </td>
+        </tr>
+      </table>
+    </ion-item-->
+  </ion-list>
+</ion-content>
+
+

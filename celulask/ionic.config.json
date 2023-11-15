@@ -1,0 +1,7 @@
+{
+  "name": "Células Juveniles IPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

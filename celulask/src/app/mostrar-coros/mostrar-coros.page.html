@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngFor = "let cor of coros" style="font-size: large;">
+      ♪ Cadena de Coros {{cor.numero}}                                                 
+     </ion-title>
+  </ion-toolbar>
+</ion-header>
+                                                                       
+ <ion-content class="background">
+   <div *ngFor = "let cor of coros" class="contenido">
+     <!--ion-button expand="full" color="light" (click)="share(cor)" color="primary">
+       <ion-icon ios="share-social-outline" md="share-social-outline"></ion-icon>
+       &nbsp;
+       Compartir
+     </ion-button-->
+     <ion-list no-lines>                                                 
+     <ion-item text-wrap class="contenido" *ngFor = "let verso of cor.versos">                                                     
+       <div style='font-size: large;text-align:center;width:100%;'>
+         <label *ngIf=" verso != '♪'">{{ verso }}</label><br/> 
+       </div>                                                          
+     </ion-item>                                                      
+   </ion-list>
+   </div>
+ </ion-content>                                                       
+                                                     
+ 

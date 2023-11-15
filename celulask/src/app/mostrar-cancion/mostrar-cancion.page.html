@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button color="light"></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngFor = "let ca of canciones" style="font-size: large;">
+     ♪ {{ca.numero}} {{ca.titulo}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+                                                                       
+ <ion-content class="background">
+     <div *ngFor = "let ca of canciones" text-wrap class="contenidoCancion">
+       <!--table class="tituloCancion">
+         <tr style="width:100%;">
+          <td style="width:100%;padding-top: 10px;padding-bottom: 10px;background-color: #003153;color:white;">
+            <ion-button expand="full" color="light" (click)="share(ca)" color="primary">
+              <ion-icon ios="share-social-outline" md="share-social-outline"></ion-icon>
+              &nbsp;
+              Compartir
+             </ion-button>
+           </td>
+         </tr>
+       </table-->
+       <ion-list no-lines class="contenidoCancion">
+         <ion-item text-wrap  class="contenidoCancion" *ngFor = "let verso of ca.versos">
+         <div class="contenidoCancion">
+           <label class="contenido" *ngIf=" verso != '♪'">{{ verso.replace("_"," ") }}</label><br/> 
+         </div>                                                          
+       </ion-item>                                                      
+     </ion-list>
+     </div>
+ </ion-content>                                                       
+                                                     
+ 
